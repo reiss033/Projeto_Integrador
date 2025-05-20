@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tela Central</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-[#0079bf] min-h-screen text-[#172b4d]">
+  <header class="flex items-center justify-between px-3 py-2 bg-[#026aa7]">
+    <div class="flex items-center space-x-2">
+      <button
+        aria-label="Quadros"
+        class="flex items-center bg-[#026aa7] hover:bg-[#055a8c] text-white font-semibold text-sm rounded px-2 py-1"
+      >
+        <i class="fas fa-columns text-sm mr-1"></i>Oficina
+      </button>
+      <div class="relative">
+        <input
+          aria-label="Buscar"
+          class="rounded px-2 py-1 text-sm w-40 sm:w-48 md:w-56 focus:outline-none"
+          placeholder="Buscar"
+          type="search"
+        />
+        <i
+          aria-hidden="true"
+          class="fas fa-search absolute right-2 top-1/2 -translate-y-1/2 text-[#ccc] pointer-events-none"
+        ></i>
+      </div>
+    </div>
+    <div class="flex items-center space-x-3 text-white text-sm font-semibold">
+      <img
+        alt="Logo do Trello branco"
+        class="w-20 h-6 object-contain"
+        height="24"
+        src="https://storage.googleapis.com/a1aa/image/d1e311d0-f36a-4c3f-6a0b-f964c8609bbf.jpg"
+        width="24"
+      />
+    </div>
+    <div class="flex items-center space-x-3 text-white text-sm font-semibold">
+      <button
+        aria-label="Adicionar"
+        class="w-7 h-7 rounded hover:bg-[#055a8c] flex items-center justify-center"
+      >
+        <i class="fas fa-plus"></i>
+      </button>
+      <button
+        aria-label="Informações"
+        class="w-7 h-7 rounded hover:bg-[#055a8c] flex items-center justify-center"
+      >
+        <i class="fas fa-info-circle"></i>
+      </button>
+      <button
+        aria-label="Notificações"
+        class="w-7 h-7 rounded hover:bg-[#055a8c] flex items-center justify-center relative"
+      >
+        <i class="fas fa-bell"></i>
+      </button>
+      <button
+        aria-label="Perfil"
+        class="w-7 h-7 rounded-full bg-[#026aa7] hover:bg-[#055a8c] flex items-center justify-center font-semibold"
+      >
+        R
+      </button>
+    </div>
+  </header>
+  <main
+    id="board"
+    class="flex flex-col sm:flex-row gap-3 p-3 max-w-full overflow-x-auto select-none"
+  >
+    <!-- List: Rotina -->
+    <section
+      class="flex flex-col bg-[#dfe3e6] rounded w-72 min-w-[18rem]"
+      data-list-id="rotina"
+    >
+      <header class="flex items-center px-3 py-2 text-sm font-bold text-[#172b4d]">
+        <span>Pendentes</span>
+        <i class="fas fa-lock ml-2 text-xs"></i>
+        <span class="ml-1 text-[#172b4d] font-normal">Particular</span>
+      </header>
+      <div
+        class="flex flex-col gap-2 p-2 min-h-[100px]"
+        data-cards-container
+        data-list-id="rotina"
+      >
+        <article
+          draggable="true"
+          class="bg-white rounded p-2 shadow-sm border border-[#ccc] cursor-move"
+          data-card-id="card1"
+          data-list-id="rotina"
+        >
+          <div class="h-1 w-10 bg-[#b04632] rounded mb-1"></div>
+          <p class="text-xs leading-tight">
+            Finalizar Material Divirta-se Organizando
+          </p>
+          <div class="flex items-center gap-1 mt-1 text-xs text-[#6b778c]">
+            <span
+              class="bg-[#eb5a46] text-white rounded px-1.5 py-0.5 flex items-center gap-1"
+            >
+              <i class="fas fa-clock text-[10px]"></i>13 de dez
+            </span>
+            <span class="ml-auto">0/3</span>
+          </div>
+        </article>
+        <article
+          draggable="true"
+          class="bg-white rounded p-2 shadow-sm border border-[#ccc] cursor-move"
+          data-card-id="card2"
+          data-list-id="rotina"
+        >
+          <div class="h-1 w-10 bg-[#b04632] rounded mb-1"></div>
+          <p class="text-xs leading-tight">Reunião com Design</p>
+          <div class="flex items-center gap-1 mt-1 text-xs text-[#6b778c]">
+            <span
+              class="bg-[#f2d600] text-[#4d4d4d] rounded px-1.5 py-0.5 flex items-center gap-1"
+            >
+              <i class="fas fa-clock text-[10px]"></i>13 de dez
+            </span>
+          </div>
+        </article>
+        <button
+          aria-label="Adicionar um cartão"
+          class="text-xs text-[#6b778c] text-left px-2 py-1 hover:underline"
+        >
+          Adicionar um cartão...
+        </button>
+      </div>
+    </section>
+
+    <!-- List: Esta Semana -->
+    <section
+      class="flex flex-col bg-[#dfe3e6] rounded w-72 min-w-[18rem]"
+      data-list-id="esta-semana"
+    >
+      <header
+        class="px-3 py-2 text-sm font-semibold text-[#172b4d] border-b border-[#ccc]"
+      >
+        Em Andamento
+      </header>
+      <div
+        class="flex flex-col gap-2 p-2 min-h-[100px]"
+        data-cards-container
+        data-list-id="esta-semana"
+      >
+        <article
+          draggable="true"
+          class="bg-white rounded p-2 shadow-sm border border-[#ccc] cursor-move"
+          data-card-id="card3"
+          data-list-id="esta-semana"
+        >
+          <div class="h-1 w-10 bg-[#0079bf] rounded mb-1"></div>
+          <p class="text-xs leading-tight">Fechar Viagem</p>
+          <div class="flex items-center gap-1 mt-1 text-xs text-[#6b778c]">
+            <i class="far fa-clock text-[10px]"></i>
+            <span>15 de dez</span>
+          </div>
+        </article>
+        <article
+          draggable="true"
+          class="bg-white rounded p-2 shadow-sm border border-[#ccc] cursor-move"
+          data-card-id="card4"
+          data-list-id="esta-semana"
+        >
+          <p class="text-xs leading-tight">Enviar material para gráfica</p>
+        </article>
+        <article
+          draggable="true"
+          class="bg-white rounded p-2 shadow-sm border border-[#ccc] cursor-move"
+          data-card-id="card5"
+          data-list-id="esta-semana"
+        >
+          <p class="text-xs leading-tight">Realizar orçamento para fim de ano</p>
+        </article>
+        <article
+          draggable="true"
+          class="bg-white rounded p-2 shadow-sm border border-[#ccc] cursor-move"
+          data-card-id="card6"
+          data-list-id="esta-semana"
+        >
+          <div class="h-1 w-10 bg-[#f2d600] rounded mb-1"></div>
+          <p class="text-xs leading-tight">Amigo secreto</p>
+          <div class="flex items-center gap-1 mt-1 text-xs text-[#6b778c]">
+            <i class="far fa-clock text-[10px]"></i>
+            <span>15 de dez</span>
+          </div>
+        </article>
+        <article
+          draggable="true"
+          class="bg-white rounded p-2 shadow-sm border border-[#ccc] cursor-move"
+          data-card-id="card7"
+          data-list-id="esta-semana"
+        >
+          <p class="text-xs leading-tight">Revisar Projeto 12</p>
+        </article>
+        <article
+          draggable="true"
+          class="bg-white rounded p-2 shadow-sm border border-[#ccc] cursor-move"
+          data-card-id="card8"
+          data-list-id="esta-semana"
+        >
+          <div class="h-1 w-10 bg-[#b04632] rounded mb-1"></div>
+          <p class="text-xs leading-tight">Escrever Post Divirta-se Organizando</p>
+          <div class="flex items-center gap-1 mt-1 text-xs text-[#6b778c]">
+            <span
+              class="bg-[#f2d600] text-[#4d4d4d] rounded px-1.5 py-0.5 flex items-center gap-1"
+            >
+              <i class="fas fa-clock text-[10px]"></i>14 de dez
+            </span>
+          </div>
+        </article>
+        <article
+          draggable="true"
+          class="bg-white rounded p-2 shadow-sm border border-[#ccc] cursor-move"
+          data-card-id="card9"
+          data-list-id="esta-semana"
+        >
+          <p class="text-xs leading-tight">Limpar caixa de entrada</p>
+        </article>
+        <button
+          aria-label="Adicionar um cartão"
+          class="text-xs text-[#6b778c] text-left px-2 py-1 hover:underline"
+        >
+          Adicionar um cartão...
+        </button>
+      </div>
+    </section>
+
+    <!-- List: Prioridade -->
+    <section
+      class="flex flex-col bg-[#dfe3e6] rounded w-72 min-w-[18rem]"
+      data-list-id="prioridade"
+    >
+      <header
+        class="px-3 py-2 text-sm font-semibold text-[#172b4d] border-b border-[#ccc]"
+      >
+        Criar nova ordem
+      </header>
+      <div
+        class="flex flex-col gap-2 p-2 min-h-[100px]"
+        data-cards-container
+        data-list-id="prioridade"
+      >
+        <article
+          draggable="true"
+          class="bg-white rounded p-2 shadow-sm border border-[#ccc] cursor-move"
+          data-card-id="card10"
+          data-list-id="prioridade"
+        >
+          <p class="text-xs leading-tight">Atualizar o Trello Clone</p>
+        </article>
+        <article
+          draggable="true"
+          class="bg-white rounded p-2 shadow-sm border border-[#ccc] cursor-move"
+          data-card-id="card11"
+          data-list-id="prioridade"
+        >
+          <div class="h-1 w-10 bg-[#f2d600] rounded mb-1"></div>
+          <p class="text-xs leading-tight">Pagar conta de luz</p>
+          <div class="flex items-center gap-1 mt-1 text-xs text-[#6b778c]">
+            <span
+              class="bg-[#eb5a46] text-white rounded px-1.5 py-0.5 flex items-center gap-1"
+            >
+              <i class="fas fa-clock text-[10px]"></i>12 de dez
+            </span>
+          </div>
+        </article>
+        <button
+          aria-label="Adicionar um cartão"
+          class="text-xs text-[#6b778c] text-left px-2 py-1 hover:underline"
+        >
+          Adicionar um cartão...
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <script src="Central.js"></script>
+
+  </body>
+  </html>
+ 
