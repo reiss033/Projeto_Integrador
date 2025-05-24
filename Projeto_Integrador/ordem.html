@@ -1,0 +1,215 @@
+<html lang="pt-BR">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Ordem de Serviço
+  </title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   @import url('https://fonts.googleapis.com/css2?family=Arial&display=swap');
+   body {
+     font-family: Arial, sans-serif;
+   }
+   /* Scrollbar for the bottom bar */
+   ::-webkit-scrollbar {
+     height: 8px;
+   }
+   ::-webkit-scrollbar-thumb {
+     background: #999;
+     border-radius: 4px;
+   }
+   /* Fix input and select heights to match original */
+   input, select, textarea, button {
+     font-family: Arial, sans-serif;
+     font-size: 13px;
+     line-height: 1.2;
+   }
+   textarea {
+     resize: none;
+   }
+  </style>
+ </head>
+ <body class="bg-[#c0c0c0] text-black select-none">
+  <div class="max-w-[900px] mx-auto border border-black shadow-lg" style="background-color:#c0c0c0;">
+   <!-- Title bar -->
+   <div class="flex items-center justify-between px-2" style="background-color:#000080; color:#fff; font-weight:700; font-family:Arial, sans-serif; height:28px; user-select:none;">
+    <div class="flex items-center space-x-1">
+     <img alt="Ícone de alerta amarelo em fundo azul escuro" class="w-4 h-4" height="16" src="https://storage.googleapis.com/a1aa/image/b9d46b2b-b310-4674-7efa-5f877a2fc905.jpg" width="16"/>
+     <span class="text-[14px] font-bold">
+      Ordem de Serviço
+     </span>
+    </div>
+    <div class="flex items-center space-x-2 text-white text-[14px]">
+     <button aria-label="Ajuda" class="hover:underline">?</button>
+     <button aria-label="Minimizar" class="hover:underline">_</button>
+     <button aria-label="Maximizar" class="hover:underline">▢</button>
+     <button aria-label="Fechar" class="hover:underline">×</button>
+    </div>
+   </div>
+   <!-- Pesquisa row -->
+   <div class="flex items-center space-x-1 px-2 py-1 text-[13px]" style="background-color:#c0c0c0;">
+    <label for="pesquisa" class="select-none">Pesquisa:</label>
+    <input id="pesquisa" type="text" class="border border-gray-400 bg-[#d9d9d9] h-6 px-1 w-[300px] outline-none"/>
+    <button aria-label="Pesquisar" class="text-gray-700 hover:text-black"><i class="fas fa-search"></i></button>
+    <button aria-label="Abrir pasta" class="text-gray-700 hover:text-black"><i class="fas fa-folder-open"></i></button>
+    <button aria-label="Editar" class="text-gray-700 hover:text-black"><i class="fas fa-edit"></i></button>
+    <button aria-label="Excluir" class="text-gray-700 hover:text-black"><i class="fas fa-trash"></i></button>
+    <button aria-label="Informações" class="text-gray-700 hover:text-black"><i class="fas fa-info-circle"></i></button>
+   </div>
+   <!-- Table header row -->
+   <div class="grid grid-cols-[80px_90px_90px_70px_90px_90px_90px] text-[13px] font-sans font-semibold border border-gray-400 bg-[#d9d9d9] select-none">
+    <div class="border-r border-gray-400 px-1 py-[2px]">Código</div>
+    <div class="border-r border-gray-400 px-1 py-[2px]">Data</div>
+    <div class="border-r border-gray-400 px-1 py-[2px]">Data de término</div>
+    <div class="border-r border-gray-400 px-1 py-[2px]">Fatura</div>
+    <div class="border-r border-gray-400 px-1 py-[2px]">Data da fatura</div>
+    <div class="border-r border-gray-400 px-1 py-[2px]">Tipo da OS</div>
+    <div class="px-1 py-[2px]">Status Atual</div>
+   </div>
+   <!-- Table input row -->
+   <div class="grid grid-cols-[80px_90px_90px_70px_90px_90px_90px] border border-gray-400 bg-[#c0c0c0]">
+    <input type="text" value="000038" class="border-r border-gray-400 bg-[#c0c0c0] px-1 py-[2px] outline-none text-[13px]"/>
+    <div class="border-r border-gray-400 flex items-center px-1 py-[2px] bg-[#c0c0c0] text-[13px]">
+     <input type="text" value="29/06/2009" class="bg-[#c0c0c0] w-full outline-none"/>
+     <img alt="Ícone de calendário preto em fundo branco" src="https://storage.googleapis.com/a1aa/image/17cb09c9-0aea-404a-709e-6259faa722fa.jpg" width="16" height="16" class="w-4 h-4"/>
+    </div>
+    <input type="text" placeholder="/ /" class="border-r border-gray-400 bg-[#c0c0c0] px-1 py-[2px] outline-none text-[13px]"/>
+    <input type="text" placeholder="/ /" class="border-r border-gray-400 bg-[#c0c0c0] px-1 py-[2px] outline-none text-[13px]"/>
+    <input type="text" placeholder="/ /" class="border-r border-gray-400 bg-[#c0c0c0] px-1 py-[2px] outline-none text-[13px]"/>
+    <select class="border-r border-gray-400 bg-[#c0c0c0] px-1 py-[2px] outline-none text-[13px]">
+     <option>Orçamento</option>
+    </select>
+    <input type="text" class="bg-[#c0c0c0] border-gray-400 px-1 py-[2px] outline-none text-[13px]"/>
+   </div>
+   <!-- Cliente row -->
+   <div class="grid grid-cols-[80px_1fr_80px_80px] border border-gray-400 bg-[#c0c0c0]">
+    <div class="border-r border-gray-400 px-1 py-[2px] font-semibold select-none text-[13px]">Cliente</div>
+    <input type="text" value="Camila Rebelo" class="border-r border-gray-400 bg-[#c0c0c0] px-1 py-[2px] outline-none text-[13px]"/>
+    <div class="border-r border-gray-400 px-1 py-[2px] font-semibold select-none text-[13px] text-center">Nome fantasia</div>
+    <input type="text" class="bg-[#c0c0c0] px-1 py-[2px] outline-none text-[13px]"/>
+   </div>
+   <!-- Tabs row -->
+   <div class="flex border border-gray-400 border-t-0 bg-[#d9d9d9] text-[13px] font-sans select-none">
+    <button id="tab-modelo" class="border-r border-gray-400 px-2 py-1 bg-[#c0c0c0] font-semibold">Modelo Veículo</button>
+    <button id="tab-observacoes" class="border-r border-gray-400 px-2 py-1">Observações internas</button>
+    <button id="tab-laudo" class="border-r border-gray-400 px-2 py-1">Laudo Técnico</button>
+    <button id="tab-servicos" class="border-r border-gray-400 px-2 py-1">Serviços a executar</button>
+    <button id="tab-status" class="border-r border-gray-400 px-2 py-1">Status</button>
+    <button id="tab-entrega" class="px-2 py-1">Entrega</button>
+   </div>
+   <!-- Content sections -->
+   <!-- Modelo Veículo -->
+   <div id="content-modelo" class="grid grid-cols-[80px_1fr_80px_80px_80px] border border-gray-400 border-t-0 bg-[#c0c0c0] text-[13px] font-sans">
+    <div class="border-r border-gray-400 px-1 py-[2px] font-semibold select-none flex items-center justify-center">Cód.</div>
+    <div class="border-r border-gray-400 px-1 py-[2px] font-semibold select-none flex items-center justify-center">Marca</div>
+    <div class="border-r border-gray-400 px-1 py-[2px] font-semibold select-none flex items-center justify-center">Modelo</div>
+    <div class="border-r border-gray-400 px-1 py-[2px] font-semibold select-none flex items-center justify-center">Placa</div>
+    <div class="px-1 py-[2px] font-semibold select-none flex items-center justify-center">KM</div>
+   </div>
+   <div id="content-modelo-2" class="grid grid-cols-[80px_1fr_80px_80px_80px] border border-gray-400 border-t-0 bg-[#c0c0c0] text-[13px] font-sans">
+    <div class="border-r border-gray-400 px-1 py-[2px] select-none flex items-center justify-center">SONY</div>
+    <div class="border-r border-gray-400 px-1 py-[2px] flex items-center justify-center">VGR2000</div>
+    <div class="border-r border-gray-400 px-1 py-[2px] flex items-center justify-center">IU16311</div>
+    <div class="border-r border-gray-400 px-1 py-[2px] flex items-center justify-center">1234ABC</div>
+    <div></div>
+   </div>
+   <div id="content-km" class="hidden grid grid-cols-[80px_1fr] border border-gray-400 border-t-0 bg-[#c0c0c0] text-[13px] font-sans">
+    <div class="border-r border-gray-400 px-1 py-[2px] select-none flex items-center justify-center">KM</div>
+    <div class="px-1 py-[2px] flex items-center justify-center">12343DEDF2</div>
+   </div>
+   <div id="content-chassi" class="hidden grid grid-cols-[80px_1fr] border border-gray-400 border-t-0 bg-[#c0c0c0] text-[13px] font-sans">
+    <div class="border-r border-gray-400 px-1 py-[2px] select-none flex items-center justify-center">Chassi</div>
+    <div class="px-1 py-[2px] flex items-center justify-center">12343DEDF2</div>
+   </div>
+   <!-- Observações internas -->
+   <div id="content-observacoes" class="hidden border border-gray-400 border-t-0 p-2 bg-[#c0c0c0] text-[13px] font-sans">
+    <div class="font-semibold select-none mb-1">Observações internas</div>
+    <textarea class="w-full resize-none p-1" rows="6" readonly>Observações internas sobre o serviço ou equipamento.</textarea>
+   </div>
+   <!-- Laudo Técnico -->
+   <div id="content-laudo" class="hidden border border-gray-400 border-t-0 p-2 bg-[#c0c0c0] text-[13px] font-sans">
+    <div class="font-semibold select-none mb-1">Laudo Técnico</div>
+    <textarea class="w-full resize-none p-1" rows="6" readonly>Descrição técnica e diagnóstico do equipamento.</textarea>
+   </div>
+   <!-- Serviços a executar -->
+   <div id="content-servicos" class="hidden grid grid-cols-2 border border-gray-400 border-t-0 bg-[#c0c0c0] text-[13px] font-sans">
+    <textarea class="border-r border-gray-400 resize-none p-1" rows="4" readonly>Com risco em cima da tampa e dentro no notebook , e tela ecs faltando</textarea>
+    <textarea class="resize-none p-1" rows="4" readonly>o notebook está com vírus e não está entrando mas no windows</textarea>
+   </div>
+   <!-- Status -->
+   <div id="content-status" class="hidden border border-gray-400 border-t-0 p-2 bg-[#c0c0c0] text-[13px] font-sans">
+    <div class="font-semibold select-none mb-1">Status</div>
+    <textarea class="w-full resize-none p-1" rows="4" readonly>Status atual do serviço e observações.</textarea>
+   </div>
+   <!-- Entrega -->
+   <div id="content-entrega" class="hidden border border-gray-400 border-t-0 p-2 bg-[#c0c0c0] text-[13px] font-sans">
+    <div class="font-semibold select-none mb-1">Entrega</div>
+    <textarea class="w-full resize-none p-1" rows="4" readonly>Informações sobre a entrega do serviço.</textarea>
+   </div>
+   <!-- Descrição do Produto -->
+   <div id="content-descricao" class="border border-gray-400 border-t-0 p-2 bg-[#d9d9d9] text-[13px] font-sans">
+    <div class="font-semibold select-none mb-1">Descrição do Produto</div>
+    <div class="whitespace-pre-wrap text-[12px]">
+     O PRODUTO QUE PASSAR 90 DIAS NA ASSISTÊNCIA VAI SER DADO COMO ABANDONO. ASSISTENCIA@ASSISTENCIA.COM.BR
+    </div>
+   </div>
+   <!-- Bottom bar -->
+   <div class="flex justify-between items-center px-2 py-1 text-[11px] font-mono border border-t-0 border-gray-400 bg-[#c0c0c0] select-none">
+    <div>F5 - Incluir   F6 - Excluir   F7 - Editar   F8 - Gravar   Esc - Cancelar   F9 - Imprimir   F10 - Pesquisa</div>
+    <div class="font-bold">Vlr. Total</div>
+   </div>
+  </div>
+  <script>
+   const tabs = {
+     "tab-modelo": ["content-modelo", "content-modelo-2", "content-km", "content-chassi", "content-descricao"],
+     "tab-observacoes": ["content-observacoes", "content-descricao"],
+     "tab-laudo": ["content-laudo", "content-descricao"],
+     "tab-servicos": ["content-servicos", "content-descricao"],
+     "tab-status": ["content-status", "content-descricao"],
+     "tab-entrega": ["content-entrega", "content-descricao"]
+   };
+
+   function hideAllContent() {
+     const allContent = document.querySelectorAll(
+       "#content-modelo, #content-modelo-2, #content-km, #content-chassi, #content-observacoes, #content-laudo, #content-servicos, #content-status, #content-entrega, #content-descricao"
+     );
+     allContent.forEach(el => el.classList.add("hidden"));
+   }
+
+   function resetTabs() {
+     document.querySelectorAll(".flex > button").forEach(btn => {
+       btn.classList.remove("bg-[#c0c0c0]", "font-semibold");
+     });
+   }
+
+   function showTabContent(tabId) {
+     hideAllContent();
+     resetTabs();
+     const tab = document.getElementById(tabId);
+     if (!tab) return;
+     tab.classList.add("bg-[#c0c0c0]", "font-semibold");
+     const contentIds = tabs[tabId];
+     if (contentIds && contentIds.length > 0) {
+       contentIds.forEach(id => {
+         const el = document.getElementById(id);
+         if (el) el.classList.remove("hidden");
+       });
+     }
+   }
+
+   Object.keys(tabs).forEach(tabId => {
+     const tab = document.getElementById(tabId);
+     if (tab) {
+       tab.addEventListener("click", () => {
+         showTabContent(tabId);
+       });
+     }
+   });
+
+   // Initialize with "Modelo Veículo" tab active
+   showTabContent("tab-modelo");
+  </script>
+ </body>
+</html>
