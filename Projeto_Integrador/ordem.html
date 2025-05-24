@@ -1,258 +1,215 @@
-<html class="scroll-smooth" lang="pt-BR">
+<html lang="pt-BR">
  <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1" name="viewport"/>
   <title>
    Ordem de Serviço
   </title>
-  <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const addButton = document.getElementById("add-card-btn");
-    const colunaAberto = document.getElementById("coluna-aberto");
-
-    addButton.addEventListener("click", () => {
-      const novoCard = document.createElement("div");
-      novoCard.className = "bg-white border border-gray-400 p-2 mb-2 shadow-md";
-      novoCard.innerHTML = `
-        <div class="font-bold">Nova Ordem de Serviço</div>
-        <div class="text-sm text-gray-700">Clique para editar...</div>
-      `;
-      colunaAberto.appendChild(novoCard);
-    });
-  });
-</script>
-
-  <script src="https://cdn.tailwindcss.com">
-    
-  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
   <style>
-   /* Custom scrollbar for the textareas to mimic Windows XP style */
-    textarea::-webkit-scrollbar {
-      width: 12px;
-      height: 12px;
-    }
-    textarea::-webkit-scrollbar-track {
-      background: #c0c0c0;
-    }
-    textarea::-webkit-scrollbar-thumb {
-      background-color: #808080;
-      border-radius: 6px;
-      border: 3px solid #c0c0c0;
-    }
+   @import url('https://fonts.googleapis.com/css2?family=Arial&display=swap');
+   body {
+     font-family: Arial, sans-serif;
+   }
+   /* Scrollbar for the bottom bar */
+   ::-webkit-scrollbar {
+     height: 8px;
+   }
+   ::-webkit-scrollbar-thumb {
+     background: #999;
+     border-radius: 4px;
+   }
+   /* Fix input and select heights to match original */
+   input, select, textarea, button {
+     font-family: Arial, sans-serif;
+     font-size: 13px;
+     line-height: 1.2;
+   }
+   textarea {
+     resize: none;
+   }
   </style>
  </head>
- <body class="bg-[#c0c0c0] font-sans select-none">
-  <div class="max-w-[900px] mx-auto mt-4 border border-[#000080] rounded-md shadow-[2px_2px_0_#fff,4px_4px_0_#000080] bg-[#c0c0c0]" style="font-family: Tahoma, Geneva, Verdana, sans-serif;">
+ <body class="bg-[#c0c0c0] text-black select-none">
+  <div class="max-w-[900px] mx-auto border border-black shadow-lg" style="background-color:#c0c0c0;">
    <!-- Title bar -->
-   <div class="flex items-center justify-between bg-[#000080] text-white text-sm font-semibold px-2 select-none rounded-t-md" style="height: 26px;">
-    <div class="flex items-center space-x-2">
-     <img alt="Ícone Ordem de Serviço" class="w-4 h-4" height="16" src="https://storage.googleapis.com/a1aa/image/78bce8e0-6681-4bdf-7c37-86de847049ee.jpg" width="16"/>
-     <span>
+   <div class="flex items-center justify-between px-2" style="background-color:#000080; color:#fff; font-weight:700; font-family:Arial, sans-serif; height:28px; user-select:none;">
+    <div class="flex items-center space-x-1">
+     <img alt="Ícone de alerta amarelo em fundo azul escuro" class="w-4 h-4" height="16" src="https://storage.googleapis.com/a1aa/image/b9d46b2b-b310-4674-7efa-5f877a2fc905.jpg" width="16"/>
+     <span class="text-[14px] font-bold">
       Ordem de Serviço
      </span>
     </div>
-    <div class="flex items-center space-x-1">
-     <button aria-label="Ajuda" class="w-5 h-5 flex items-center justify-center hover:bg-[#0000ff] rounded">
-      <i class="fas fa-question fa-xs">
-      </i>
-     </button>
-     <button aria-label="Minimizar" class="w-5 h-5 flex items-center justify-center hover:bg-[#0000ff] rounded">
-      <i class="fas fa-window-minimize fa-xs">
-      </i>
-     </button>
-     <button aria-label="Maximizar" class="w-5 h-5 flex items-center justify-center hover:bg-[#0000ff] rounded">
-      <i class="fas fa-window-maximize fa-xs">
-      </i>
-     </button>
-     <button aria-label="Fechar" class="w-5 h-5 flex items-center justify-center hover:bg-[#ff0000] rounded">
-      <i class="fas fa-times fa-xs">
-      </i>
-     </button>
+    <div class="flex items-center space-x-2 text-white text-[14px]">
+     <button aria-label="Ajuda" class="hover:underline">?</button>
+     <button aria-label="Minimizar" class="hover:underline">_</button>
+     <button aria-label="Maximizar" class="hover:underline">▢</button>
+     <button aria-label="Fechar" class="hover:underline">×</button>
     </div>
    </div>
-   <!-- Main content area -->
-   <div class="p-2 space-y-1 text-xs text-[#000000]">
-    <!-- Pesquisa row -->
-    <div class="flex items-center space-x-1">
-     <label class="w-[60px]" for="pesquisa">
-      Pesquisa:
-     </label>
-     <input class="border border-[#808080] bg-[#c0c0c0] focus:outline-none focus:ring-1 focus:ring-[#000080] rounded-sm px-1 py-[2px] w-full max-w-[200px]" id="pesquisa" type="text"/>
-     <button aria-label="Pesquisar" class="ml-1 text-[#000080] hover:text-[#0000ff] focus:outline-none">
-      <i class="fas fa-search">
-      </i>
-     </button>
-     <button aria-label="Limpar" class="text-[#000080] hover:text-[#0000ff] focus:outline-none">
-      <i class="fas fa-eraser">
-      </i>
-     </button>
-     <button aria-label="Novo" class="text-[#000080] hover:text-[#0000ff] focus:outline-none">
-      <i class="fas fa-file">
-      </i>
-     </button>
-     <button aria-label="Editar" class="text-[#000080] hover:text-[#0000ff] focus:outline-none">
-      <i class="fas fa-edit">
-      </i>
-     </button>
-     <button aria-label="Salvar" class="text-[#000080] hover:text-[#0000ff] focus:outline-none">
-      <i class="fas fa-save">
-      </i>
-     </button>
-     <button aria-label="Excluir" class="text-[#000080] hover:text-[#0000ff] focus:outline-none">
-      <i class="fas fa-trash">
-      </i>
-     </button>
-     <button aria-label="Imprimir" class="text-[#000080] hover:text-[#0000ff] focus:outline-none">
-      <i class="fas fa-print">
-      </i>
-     </button>
-     <button aria-label="Ajuda" class="text-[#000080] hover:text-[#0000ff] focus:outline-none">
-      <i class="fas fa-info-circle">
-      </i>
-     </button>
+   <!-- Pesquisa row -->
+   <div class="flex items-center space-x-1 px-2 py-1 text-[13px]" style="background-color:#c0c0c0;">
+    <label for="pesquisa" class="select-none">Pesquisa:</label>
+    <input id="pesquisa" type="text" class="border border-gray-400 bg-[#d9d9d9] h-6 px-1 w-[300px] outline-none"/>
+    <button aria-label="Pesquisar" class="text-gray-700 hover:text-black"><i class="fas fa-search"></i></button>
+    <button aria-label="Abrir pasta" class="text-gray-700 hover:text-black"><i class="fas fa-folder-open"></i></button>
+    <button aria-label="Editar" class="text-gray-700 hover:text-black"><i class="fas fa-edit"></i></button>
+    <button aria-label="Excluir" class="text-gray-700 hover:text-black"><i class="fas fa-trash"></i></button>
+    <button aria-label="Informações" class="text-gray-700 hover:text-black"><i class="fas fa-info-circle"></i></button>
+   </div>
+   <!-- Table header row -->
+   <div class="grid grid-cols-[80px_90px_90px_70px_90px_90px_90px] text-[13px] font-sans font-semibold border border-gray-400 bg-[#d9d9d9] select-none">
+    <div class="border-r border-gray-400 px-1 py-[2px]">Código</div>
+    <div class="border-r border-gray-400 px-1 py-[2px]">Data</div>
+    <div class="border-r border-gray-400 px-1 py-[2px]">Data de término</div>
+    <div class="border-r border-gray-400 px-1 py-[2px]">Fatura</div>
+    <div class="border-r border-gray-400 px-1 py-[2px]">Data da fatura</div>
+    <div class="border-r border-gray-400 px-1 py-[2px]">Tipo da OS</div>
+    <div class="px-1 py-[2px]">Status Atual</div>
+   </div>
+   <!-- Table input row -->
+   <div class="grid grid-cols-[80px_90px_90px_70px_90px_90px_90px] border border-gray-400 bg-[#c0c0c0]">
+    <input type="text" value="000038" class="border-r border-gray-400 bg-[#c0c0c0] px-1 py-[2px] outline-none text-[13px]"/>
+    <div class="border-r border-gray-400 flex items-center px-1 py-[2px] bg-[#c0c0c0] text-[13px]">
+     <input type="text" value="29/06/2009" class="bg-[#c0c0c0] w-full outline-none"/>
+     <img alt="Ícone de calendário preto em fundo branco" src="https://storage.googleapis.com/a1aa/image/17cb09c9-0aea-404a-709e-6259faa722fa.jpg" width="16" height="16" class="w-4 h-4"/>
     </div>
-    <!-- Table header row -->
-    <div class="grid grid-cols-[60px_100px_90px_90px_90px_90px_90px_90px] gap-1 text-center font-semibold border border-[#808080] bg-[#d4d0c8] select-none">
-     <div class="border-r border-[#808080] py-0.5">
-      Código
-     </div>
-     <div class="border-r border-[#808080] py-0.5">
-      Data
-     </div>
-     <div class="border-r border-[#808080] py-0.5">
-      Data de término
-     </div>
-     <div class="border-r border-[#808080] py-0.5">
-      Fatura
-     </div>
-     <div class="border-r border-[#808080] py-0.5">
-      Data da fatura
-     </div>
-     <div class="border-r border-[#808080] py-0.5">
-      Tipo da OS
-     </div>
-     <div class="border-r border-[#808080] py-0.5">
-      Status Atual
-     </div>
-     <div class="py-0.5">
-     </div>
+    <input type="text" placeholder="/ /" class="border-r border-gray-400 bg-[#c0c0c0] px-1 py-[2px] outline-none text-[13px]"/>
+    <input type="text" placeholder="/ /" class="border-r border-gray-400 bg-[#c0c0c0] px-1 py-[2px] outline-none text-[13px]"/>
+    <input type="text" placeholder="/ /" class="border-r border-gray-400 bg-[#c0c0c0] px-1 py-[2px] outline-none text-[13px]"/>
+    <select class="border-r border-gray-400 bg-[#c0c0c0] px-1 py-[2px] outline-none text-[13px]">
+     <option>Orçamento</option>
+    </select>
+    <input type="text" class="bg-[#c0c0c0] border-gray-400 px-1 py-[2px] outline-none text-[13px]"/>
+   </div>
+   <!-- Cliente row -->
+   <div class="grid grid-cols-[80px_1fr_80px_80px] border border-gray-400 bg-[#c0c0c0]">
+    <div class="border-r border-gray-400 px-1 py-[2px] font-semibold select-none text-[13px]">Cliente</div>
+    <input type="text" value="Camila Rebelo" class="border-r border-gray-400 bg-[#c0c0c0] px-1 py-[2px] outline-none text-[13px]"/>
+    <div class="border-r border-gray-400 px-1 py-[2px] font-semibold select-none text-[13px] text-center">Nome fantasia</div>
+    <input type="text" class="bg-[#c0c0c0] px-1 py-[2px] outline-none text-[13px]"/>
+   </div>
+   <!-- Tabs row -->
+   <div class="flex border border-gray-400 border-t-0 bg-[#d9d9d9] text-[13px] font-sans select-none">
+    <button id="tab-modelo" class="border-r border-gray-400 px-2 py-1 bg-[#c0c0c0] font-semibold">Modelo Veículo</button>
+    <button id="tab-observacoes" class="border-r border-gray-400 px-2 py-1">Observações internas</button>
+    <button id="tab-laudo" class="border-r border-gray-400 px-2 py-1">Laudo Técnico</button>
+    <button id="tab-servicos" class="border-r border-gray-400 px-2 py-1">Serviços a executar</button>
+    <button id="tab-status" class="border-r border-gray-400 px-2 py-1">Status</button>
+    <button id="tab-entrega" class="px-2 py-1">Entrega</button>
+   </div>
+   <!-- Content sections -->
+   <!-- Modelo Veículo -->
+   <div id="content-modelo" class="grid grid-cols-[80px_1fr_80px_80px_80px] border border-gray-400 border-t-0 bg-[#c0c0c0] text-[13px] font-sans">
+    <div class="border-r border-gray-400 px-1 py-[2px] font-semibold select-none flex items-center justify-center">Cód.</div>
+    <div class="border-r border-gray-400 px-1 py-[2px] font-semibold select-none flex items-center justify-center">Marca</div>
+    <div class="border-r border-gray-400 px-1 py-[2px] font-semibold select-none flex items-center justify-center">Modelo</div>
+    <div class="border-r border-gray-400 px-1 py-[2px] font-semibold select-none flex items-center justify-center">Placa</div>
+    <div class="px-1 py-[2px] font-semibold select-none flex items-center justify-center">KM</div>
+   </div>
+   <div id="content-modelo-2" class="grid grid-cols-[80px_1fr_80px_80px_80px] border border-gray-400 border-t-0 bg-[#c0c0c0] text-[13px] font-sans">
+    <div class="border-r border-gray-400 px-1 py-[2px] select-none flex items-center justify-center">SONY</div>
+    <div class="border-r border-gray-400 px-1 py-[2px] flex items-center justify-center">VGR2000</div>
+    <div class="border-r border-gray-400 px-1 py-[2px] flex items-center justify-center">IU16311</div>
+    <div class="border-r border-gray-400 px-1 py-[2px] flex items-center justify-center">1234ABC</div>
+    <div></div>
+   </div>
+   <div id="content-km" class="hidden grid grid-cols-[80px_1fr] border border-gray-400 border-t-0 bg-[#c0c0c0] text-[13px] font-sans">
+    <div class="border-r border-gray-400 px-1 py-[2px] select-none flex items-center justify-center">KM</div>
+    <div class="px-1 py-[2px] flex items-center justify-center">12343DEDF2</div>
+   </div>
+   <div id="content-chassi" class="hidden grid grid-cols-[80px_1fr] border border-gray-400 border-t-0 bg-[#c0c0c0] text-[13px] font-sans">
+    <div class="border-r border-gray-400 px-1 py-[2px] select-none flex items-center justify-center">Chassi</div>
+    <div class="px-1 py-[2px] flex items-center justify-center">12343DEDF2</div>
+   </div>
+   <!-- Observações internas -->
+   <div id="content-observacoes" class="hidden border border-gray-400 border-t-0 p-2 bg-[#c0c0c0] text-[13px] font-sans">
+    <div class="font-semibold select-none mb-1">Observações internas</div>
+    <textarea class="w-full resize-none p-1" rows="6" readonly>Observações internas sobre o serviço ou equipamento.</textarea>
+   </div>
+   <!-- Laudo Técnico -->
+   <div id="content-laudo" class="hidden border border-gray-400 border-t-0 p-2 bg-[#c0c0c0] text-[13px] font-sans">
+    <div class="font-semibold select-none mb-1">Laudo Técnico</div>
+    <textarea class="w-full resize-none p-1" rows="6" readonly>Descrição técnica e diagnóstico do equipamento.</textarea>
+   </div>
+   <!-- Serviços a executar -->
+   <div id="content-servicos" class="hidden grid grid-cols-2 border border-gray-400 border-t-0 bg-[#c0c0c0] text-[13px] font-sans">
+    <textarea class="border-r border-gray-400 resize-none p-1" rows="4" readonly>Com risco em cima da tampa e dentro no notebook , e tela ecs faltando</textarea>
+    <textarea class="resize-none p-1" rows="4" readonly>o notebook está com vírus e não está entrando mas no windows</textarea>
+   </div>
+   <!-- Status -->
+   <div id="content-status" class="hidden border border-gray-400 border-t-0 p-2 bg-[#c0c0c0] text-[13px] font-sans">
+    <div class="font-semibold select-none mb-1">Status</div>
+    <textarea class="w-full resize-none p-1" rows="4" readonly>Status atual do serviço e observações.</textarea>
+   </div>
+   <!-- Entrega -->
+   <div id="content-entrega" class="hidden border border-gray-400 border-t-0 p-2 bg-[#c0c0c0] text-[13px] font-sans">
+    <div class="font-semibold select-none mb-1">Entrega</div>
+    <textarea class="w-full resize-none p-1" rows="4" readonly>Informações sobre a entrega do serviço.</textarea>
+   </div>
+   <!-- Descrição do Produto -->
+   <div id="content-descricao" class="border border-gray-400 border-t-0 p-2 bg-[#d9d9d9] text-[13px] font-sans">
+    <div class="font-semibold select-none mb-1">Descrição do Produto</div>
+    <div class="whitespace-pre-wrap text-[12px]">
+     O PRODUTO QUE PASSAR 90 DIAS NA ASSISTÊNCIA VAI SER DADO COMO ABANDONO. ASSISTENCIA@ASSISTENCIA.COM.BR
     </div>
-    <!-- Table input row -->
-    <div class="grid grid-cols-[60px_100px_90px_90px_90px_90px_90px_90px] gap-1 border border-[#808080] bg-[#e0dfdc] text-xs">
-     <input aria-label="Código" class="border border-[#808080] bg-[#e0dfdc] px-1 py-[2px] text-center focus:outline-none" type="text" value="000038"/>
-     <input aria-label="Data" class="border border-[#808080] bg-[#e0dfdc] px-1 py-[2px] text-center focus:outline-none" type="date" value="2009-06-29"/>
-     <input aria-label="Data de término" class="border border-[#808080] bg-[#e0dfdc] px-1 py-[2px] text-center focus:outline-none" placeholder="  /  /" type="text"/>
-     <input aria-label="Fatura" class="border border-[#808080] bg-[#e0dfdc] px-1 py-[2px] text-center focus:outline-none" placeholder="  /  /" type="text"/>
-     <input aria-label="Data da fatura" class="border border-[#808080] bg-[#e0dfdc] px-1 py-[2px] text-center focus:outline-none" placeholder="  /  /" type="text"/>
-     <select aria-label="Tipo da OS" class="border border-[#808080] bg-[#e0dfdc] px-1 py-[2px] text-center focus:outline-none">
-      <option>
-       Orçamento
-      </option>
-      <option>
-       Ordem de Serviço
-      </option>
-     </select>
-     <input aria-label="Status Atual" class="border border-[#808080] bg-[#e0dfdc] px-1 py-[2px] text-center focus:outline-none" type="text"/>
-     <div>
-     </div>
-    </div>
-    <!-- Cliente and Nome fantasia row -->
-    <div class="grid grid-cols-[60px_1fr_60px_1fr] gap-1">
-     <label class="border border-[#808080] bg-[#e0dfdc] px-1 py-[2px] text-center text-xs select-none" for="cliente">
-      Cliente
-     </label>
-     <input aria-label="Nome do cliente" class="border border-[#808080] bg-[#e0dfdc] px-1 py-[2px] focus:outline-none" id="cliente" type="text" value="Camila Rebelo"/>
-     <label class="border border-[#808080] bg-[#e0dfdc] px-1 py-[2px] text-center text-xs select-none" for="nome-fantasia">
-      Nome fantasia
-     </label>
-     <input aria-label="Nome fantasia" class="border border-[#808080] bg-[#e0dfdc] px-1 py-[2px] focus:outline-none" id="nome-fantasia" type="text" value="Ca"/>
-    </div>
-    <!-- Tabs -->
-    <div class="flex space-x-0.5 border border-[#808080] bg-[#d4d0c8] text-xs select-none">
-     <button aria-current="page" class="border border-[#808080] border-b-0 bg-[#e0dfdc] px-2 py-0.5 font-semibold text-[#000000]" type="button">
-      Modelo Veículo
-     </button>
-     <button class="border border-[#808080] border-b-0 bg-[#d4d0c8] px-2 py-0.5 text-[#000000]" type="button">
-      Acessórios
-     </button>
-     <button class="border border-[#808080] border-b-0 bg-[#d4d0c8] px-2 py-0.5 text-[#000000]" type="button">
-      Laudo Técnico
-     </button>
-     <button class="border border-[#808080] border-b-0 bg-[#d4d0c8] px-2 py-0.5 text-[#000000]" type="button">
-      Serviços a executar
-     </button>
-     <button class="border border-[#808080] border-b-0 bg-[#d4d0c8] px-2 py-0.5 text-[#000000]" type="button">
-      Status
-     </button>
-     <button class="border border-[#808080] border-b-0 bg-[#d4d0c8] px-2 py-0.5 text-[#000000]" type="button">
-      Entrega
-     </button>
-    </div>
-    <!-- Product specification grid -->
-    <div class="grid grid-cols-[60px_1fr_90px_90px_140px] gap-1 border border-t-0 border-[#808080] bg-[#e0dfdc] text-xs">
-     <label class="border border-[#808080] bg-[#e0dfdc] px-1 py-[2px] text-center select-none" for="cod-produto">
-      Cód.
-     </label>
-     <input aria-label="Código do produto" class="border border-[#808080] bg-[#e0dfdc] px-1 py-[2px] text-center focus:outline-none" id="cod-produto" type="text" value="123" readonly/>
-     <label class="border border-[#808080] bg-[#e0dfdc] px-1 py-[2px] text-center select-none" for="marca">
-      Marca
-     </label>
-     <label class="border border-[#808080] bg-[#e0dfdc] px-1 py-[2px] text-center select-none" for="modelo">
-      Modelo
-     </label>
-     <label class="border border-[#808080] bg-[#e0dfdc] px-1 py-[2px] text-center select-none" for="placa">
-      Placa
-     </label>
-    </div>
-    <div class="grid grid-cols-[60px_1fr_90px_90px_140px] gap-1 border border-t-0 border-[#808080] bg-[#e0dfdc] text-xs">
-     <!-- <input aria-label="Nome do pro" class="border border-[#808080] bg-[#e0dfdc] px-1 py-[2px] focus:outline-none" id="nome-produto" type="text" value=" "/> -->
-     <input aria-label="Marca" class="border border-[#808080] bg-[#e0dfdc] px-1 py-[2px] text-center focus:outline-none" id="marca" type="text" value="SONY"/>
-     <input aria-label="Modelo" class="border border-[#808080] bg-[#e0dfdc] px-1 py-[2px] text-center focus:outline-none" id="modelo" type="text" value="VGR2000"/>
-     <input aria-label="Placa" class="border border-[#808080] bg-[#e0dfdc] px-1 py-[2px] text-center focus:outline-none" id="placa" type="text" value="IUI6311"/>
-     <input aria-label="KM" class="border border-[#808080] bg-[#e0dfdc] px-1 py-[2px] text-center focus:outline-none" id="KM" type="text" value="1234ABC"/>
-
-    </div>
-     <!-- Chassi row -->
-    <div class="grid grid-cols-[60px_1fr] gap-1 border border-t-0 border-[#808080] bg-[#e0dfdc] text-xs">
-     <label class="border border-[#808080] bg-[#e0dfdc] px-1 py-[2px] text-center select-none" for="chassi">
-      KM
-     </label>
-     <input aria-label="KM" class="border border-[#808080] bg-[#e0dfdc] px-1 py-[2px] focus:outline-none" id="KM" type="text" value="12343DEDF2"/>
-    </div>
-    <!-- Chassi row -->
-    <div class="grid grid-cols-[60px_1fr] gap-1 border border-t-0 border-[#808080] bg-[#e0dfdc] text-xs">
-     <label class="border border-[#808080] bg-[#e0dfdc] px-1 py-[2px] text-center select-none" for="chassi">
-      Chassi
-     </label>
-     <input aria-label="Chassi" class="border border-[#808080] bg-[#e0dfdc] px-1 py-[2px] focus:outline-none" id="chassi" type="text" value="12343DEDF2"/>
-    </div>
-    <!-- Textareas row -->
-    <div class="grid grid-cols-2 gap-1 border border-t-0 border-[#808080] bg-[#e0dfdc] text-xs">
-     <textarea aria-label="Descrição do defeito" class="border border-[#808080] bg-[#e0dfdc] p-1 resize-none focus:outline-none" rows="5">Com risco em cima da tampa e dentro no notebook , e tela ecs faltando</textarea>
-     <textarea aria-label="Reclamação informado pelo cliente" class="border border-[#808080] bg-[#e0dfdc] p-1 resize-none focus:outline-none" rows="5">o notebook está com vírus e não está entrando mas no windows</textarea>
-    </div>
-    <!-- Descrição do produto label -->
-    <label class="block border border-[#808080] bg-[#d4d0c8] px-1 py-0.5 text-xs font-semibold select-none">
-     Descrição do Produto
-    </label>
-    <!-- Descrição do produto textarea -->
-    <textarea aria-label="Descrição do Produto" class="w-full border border-[#808080] bg-[#e0dfdc] p-1 resize-none text-xs focus:outline-none" rows="3">O PRODUTO QUE PASSAR 90 DIAS NA ASSISTÊNCIA VAI SER DADO COMO ABANDONO.
-ASSISTENCIA@ASSISTENCIA.COM.BR</textarea>
-    <!-- Bottom right total -->
-    <div class="flex justify-end space-x-1 border border-t-0 border-[#808080] bg-[#d4d0c8] px-1 py-0.5 text-xs font-semibold select-none">
-     <span>
-      Vlr.
-     </span>
-     <span>
-      Total
-     </span>
-    </div>
-    <!-- Bottom function keys -->
-    <div class="border border-t-0 border-[#808080] bg-[#d4d0c8] px-1 py-1 text-[10px] font-mono select-none">
-     F5 - Incluir    F6 - Excluir    F7 - Editar    F8 - Gravar    Esc - Cancelar    F9 - Imprimir    F10 - Pesquisa
-    </div>
+   </div>
+   <!-- Bottom bar -->
+   <div class="flex justify-between items-center px-2 py-1 text-[11px] font-mono border border-t-0 border-gray-400 bg-[#c0c0c0] select-none">
+    <div>F5 - Incluir   F6 - Excluir   F7 - Editar   F8 - Gravar   Esc - Cancelar   F9 - Imprimir   F10 - Pesquisa</div>
+    <div class="font-bold">Vlr. Total</div>
    </div>
   </div>
+  <script>
+   const tabs = {
+     "tab-modelo": ["content-modelo", "content-modelo-2", "content-km", "content-chassi", "content-descricao"],
+     "tab-observacoes": ["content-observacoes", "content-descricao"],
+     "tab-laudo": ["content-laudo", "content-descricao"],
+     "tab-servicos": ["content-servicos", "content-descricao"],
+     "tab-status": ["content-status", "content-descricao"],
+     "tab-entrega": ["content-entrega", "content-descricao"]
+   };
+
+   function hideAllContent() {
+     const allContent = document.querySelectorAll(
+       "#content-modelo, #content-modelo-2, #content-km, #content-chassi, #content-observacoes, #content-laudo, #content-servicos, #content-status, #content-entrega, #content-descricao"
+     );
+     allContent.forEach(el => el.classList.add("hidden"));
+   }
+
+   function resetTabs() {
+     document.querySelectorAll(".flex > button").forEach(btn => {
+       btn.classList.remove("bg-[#c0c0c0]", "font-semibold");
+     });
+   }
+
+   function showTabContent(tabId) {
+     hideAllContent();
+     resetTabs();
+     const tab = document.getElementById(tabId);
+     if (!tab) return;
+     tab.classList.add("bg-[#c0c0c0]", "font-semibold");
+     const contentIds = tabs[tabId];
+     if (contentIds && contentIds.length > 0) {
+       contentIds.forEach(id => {
+         const el = document.getElementById(id);
+         if (el) el.classList.remove("hidden");
+       });
+     }
+   }
+
+   Object.keys(tabs).forEach(tabId => {
+     const tab = document.getElementById(tabId);
+     if (tab) {
+       tab.addEventListener("click", () => {
+         showTabContent(tabId);
+       });
+     }
+   });
+
+   // Initialize with "Modelo Veículo" tab active
+   showTabContent("tab-modelo");
+  </script>
  </body>
 </html>
