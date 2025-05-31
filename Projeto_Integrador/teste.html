@@ -104,7 +104,7 @@
       data-list-id="pendentes"
       id="pendentesList"
       ondragover="event.preventDefault()"
-      ondrop="dropCard(event, 'pendentesList')"
+      ondrop="dropCard(event, 'pendentesCards')"
     >
       <header class="flex items-center px-3 py-2 text-sm font-bold text-[#172b4d]">
         <span>Pendentes</span>
@@ -122,7 +122,7 @@
       data-list-id="em-andamento"
       id="emAndamentoList"
       ondragover="event.preventDefault()"
-      ondrop="dropCard(event, 'emAndamentoList')"
+      ondrop="dropCard(event, 'emAndamentoCards')"
     >
       <header
         class="px-3 py-2 text-sm font-semibold text-[#172b4d] border-b border-[#ccc]"
@@ -140,7 +140,7 @@
       data-list-id="prioridade"
       id="prioridadeList"
       ondragover="event.preventDefault()"
-      ondrop="dropCard(event, 'prioridadeList')"
+      ondrop="dropCard(event, 'prioridadeCards')"
     >
       <header
         class="px-3 py-2 text-sm font-semibold text-[#172b4d] border-b border-[#ccc]"
@@ -446,12 +446,35 @@
       }
     }
 
+    // Function to find the card after the current mouse Y position
+    function getDragAfterElement(container, y) {
+      const draggableElements = [...container.querySelectorAll("article:not(.opacity-50)")];
+
+      return draggableElements.reduce((closest, child) => {
+        const box = child.getBoundingClientRect();
+        const offset = y - box.top - box.height / 2;
+        if (offset < 0 && offset > closest.offset) {
+          return { offset: offset, element: child };
+        } else {
+          return closest;
+        }
+      }, { offset: Number.NEGATIVE_INFINITY }).element || null;
+    }
+
     function dropCard(event, targetListId) {
       event.preventDefault();
       if (!draggedCard) return;
       const targetList = document.getElementById(targetListId);
       if (!targetList) return;
-      targetList.appendChild(draggedCard);
+
+      const afterElement = getDragAfterElement(targetList, event.clientY);
+
+      if (afterElement == null) {
+        targetList.appendChild(draggedCard);
+      } else {
+        targetList.insertBefore(draggedCard, afterElement);
+      }
+
       draggedCard.classList.remove("opacity-50");
       draggedCard = null;
       closeModal();
@@ -459,6 +482,7 @@
 
     // Add drag event listeners to existing cards and new cards
     function addDragListeners(card) {
+      card.setAttribute("draggable", "true");
       card.addEventListener("dragstart", dragStart);
       card.addEventListener("dragend", dragEnd);
     }
